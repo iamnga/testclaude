@@ -5,6 +5,10 @@ import viVN from 'antd/locale/vi_VN';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import AccountList from './pages/accounts/AccountList';
+import AccountStatement from './pages/accounts/AccountStatement';
+import BlockedAccounts from './pages/accounts/BlockedAccounts';
+import EInvoices from './pages/accounts/EInvoices';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -61,6 +65,31 @@ const AppRoutes: React.FC = () => {
       <Route path="/dashboard" element={
         <ProtectedRoute>
           <Dashboard />
+        </ProtectedRoute>
+      } />
+
+      {/* Account Info Routes */}
+      <Route path="/accounts/list" element={
+        <ProtectedRoute>
+          <AccountList />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/accounts/statement" element={
+        <ProtectedRoute>
+          <AccountStatement />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/accounts/blocked" element={
+        <ProtectedRoute>
+          <BlockedAccounts />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/accounts/einvoices" element={
+        <ProtectedRoute>
+          <EInvoices />
         </ProtectedRoute>
       } />
 

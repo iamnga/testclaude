@@ -49,3 +49,31 @@ export interface QuickAccessItem {
   path: string;
   description: string;
 }
+
+export interface BlockedAccount {
+  id: string;
+  accountNumber: string;
+  accountName: string;
+  blockedAmount: number;
+  currency: string;
+  blockReason: string;
+  blockDate: string;
+  releaseDate?: string;
+  status: 'blocked' | 'released';
+  referenceNumber: string;
+}
+
+export interface EInvoice {
+  id: string;
+  invoiceNumber: string;
+  invoiceDate: string;
+  accountNumber: string;
+  transactionType: string;
+  amount: number;
+  currency: string;
+  taxAmount: number;
+  totalAmount: number;
+  description: string;
+  status: 'issued' | 'cancelled';
+  downloadUrl?: string;
+}
