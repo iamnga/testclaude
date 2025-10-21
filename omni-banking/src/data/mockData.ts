@@ -1,4 +1,4 @@
-import { User, Transaction, DepositContract } from '../types';
+import type { User, Transaction, DepositContract } from '../types';
 
 // Mock users - password mặc định từ OCB
 export const mockUsers: User[] = [
