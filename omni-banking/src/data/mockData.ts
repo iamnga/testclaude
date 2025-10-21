@@ -1,4 +1,4 @@
-import type { User, Transaction, DepositContract, BlockedAccount, EInvoice } from '../types';
+import type { User, Transaction, DepositContract, BlockedAccount, EInvoice, BillService, BillPayment } from '../types';
 
 // Mock users - password mặc định từ OCB
 export const mockUsers: User[] = [
@@ -318,4 +318,100 @@ export const mockEInvoices: EInvoice[] = [
     status: 'cancelled',
     downloadUrl: '/invoices/INV005.pdf'
   }
+];
+
+// Mock bill services
+export const mockBillServices: BillService[] = [
+  { code: 'EVN', name: 'Điện lực miền Nam (EVN SPC)', category: 'electricity' },
+  { code: 'EVNHN', name: 'Điện lực Hà Nội (EVN HANOI)', category: 'electricity' },
+  { code: 'EVNHCM', name: 'Điện lực TP.HCM', category: 'electricity' },
+  { code: 'SAWACO', name: 'Nước Sài Gòn (SAWACO)', category: 'water' },
+  { code: 'HAWACO', name: 'Nước Hà Nội (HAWACO)', category: 'water' },
+  { code: 'VNPT', name: 'VNPT VinaPhone', category: 'mobile' },
+  { code: 'VIETTEL', name: 'Viettel Mobile', category: 'mobile' },
+  { code: 'MOBI', name: 'MobiFone', category: 'mobile' },
+  { code: 'FPT', name: 'FPT Telecom', category: 'internet' },
+  { code: 'VIETTEL_NET', name: 'Viettel Internet', category: 'internet' },
+  { code: 'VNPT_NET', name: 'VNPT Internet', category: 'internet' },
+  { code: 'BAMBOO', name: 'Bamboo Airways', category: 'airline' },
+  { code: 'VNA', name: 'Vietnam Airlines', category: 'airline' },
+  { code: 'VIETJET', name: 'VietJet Air', category: 'airline' },
+  { code: 'VNPT_PHONE', name: 'VNPT - Điện thoại cố định', category: 'phone' },
+  { code: 'VIETTEL_PHONE', name: 'Viettel - Điện thoại cố định', category: 'phone' },
+];
+
+// Mock bill payment history
+export const mockBillPayments: BillPayment[] = [
+  {
+    id: 'BILL001',
+    serviceCode: 'EVN',
+    serviceName: 'Điện lực miền Nam (EVN SPC)',
+    customerCode: 'PD12345678',
+    customerName: 'Nguyễn Văn A',
+    billNumber: 'EVN202510001',
+    amount: 1500000,
+    fromAccount: '0011234567890',
+    paymentDate: '2025-10-15T10:30:00',
+    period: '09/2025',
+    status: 'completed',
+    feeAmount: 2200,
+    totalAmount: 1502200,
+  },
+  {
+    id: 'BILL002',
+    serviceCode: 'SAWACO',
+    serviceName: 'Nước Sài Gòn (SAWACO)',
+    customerCode: 'NC98765432',
+    customerName: 'Nguyễn Văn A',
+    billNumber: 'SW202510002',
+    amount: 350000,
+    fromAccount: '0011234567890',
+    paymentDate: '2025-10-10T14:20:00',
+    period: '09/2025',
+    status: 'completed',
+    feeAmount: 1100,
+    totalAmount: 351100,
+  },
+  {
+    id: 'BILL003',
+    serviceCode: 'VIETTEL',
+    serviceName: 'Viettel Mobile',
+    customerCode: '0912345678',
+    customerName: 'Nguyễn Văn A',
+    amount: 200000,
+    fromAccount: '0011234567890',
+    paymentDate: '2025-10-05T09:15:00',
+    period: '10/2025',
+    status: 'completed',
+    feeAmount: 1100,
+    totalAmount: 201100,
+  },
+  {
+    id: 'BILL004',
+    serviceCode: 'FPT',
+    serviceName: 'FPT Telecom',
+    customerCode: 'FPT123456',
+    customerName: 'Nguyễn Văn A',
+    amount: 500000,
+    fromAccount: '0011234567890',
+    paymentDate: '2025-09-28T16:45:00',
+    period: '09/2025',
+    status: 'completed',
+    feeAmount: 1650,
+    totalAmount: 501650,
+  },
+  {
+    id: 'BILL005',
+    serviceCode: 'BAMBOO',
+    serviceName: 'Bamboo Airways',
+    customerCode: 'BB2025100001',
+    customerName: 'Nguyễn Văn A',
+    billNumber: 'BAMBOO202510001',
+    amount: 3500000,
+    fromAccount: '0011234567890',
+    paymentDate: '2025-09-20T11:00:00',
+    status: 'completed',
+    feeAmount: 5500,
+    totalAmount: 3505500,
+  },
 ];

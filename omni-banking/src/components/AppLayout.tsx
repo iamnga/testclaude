@@ -17,6 +17,8 @@ import {
   FileSearchOutlined,
   LockOutlined,
   FileProtectOutlined,
+  DollarOutlined,
+  HistoryOutlined,
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -122,10 +124,23 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       ],
     },
     {
-      key: '/bills',
-      icon: <FileTextOutlined />,
+      key: 'bills',
+      icon: <DollarOutlined />,
       label: 'Thanh toán hóa đơn',
-      onClick: () => navigate('/bills'),
+      children: [
+        {
+          key: '/bills',
+          icon: <FileTextOutlined />,
+          label: 'Thanh toán hóa đơn',
+          onClick: () => navigate('/bills'),
+        },
+        {
+          key: '/bills/history',
+          icon: <HistoryOutlined />,
+          label: 'Lịch sử thanh toán',
+          onClick: () => navigate('/bills/history'),
+        },
+      ],
     },
     {
       key: 'deposit',
@@ -179,7 +194,9 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     const path = location.pathname;
     if (path.startsWith('/accounts/')) return ['account-info'];
     if (path.startsWith('/transfer/')) return ['transfer'];
+    if (path.startsWith('/bills/')) return ['bills'];
     if (path.startsWith('/deposit/')) return ['deposit'];
+    if (path === '/bills') return ['bills'];
     return [];
   };
 

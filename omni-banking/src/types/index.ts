@@ -155,3 +155,27 @@ export interface TransferVoucher {
   voucherUrl?: string;
 }
 
+// Bill Payment types
+export interface BillService {
+  code: string;
+  name: string;
+  category: 'electricity' | 'water' | 'phone' | 'internet' | 'airline' | 'mobile' | 'other';
+  icon?: string;
+}
+
+export interface BillPayment {
+  id: string;
+  serviceCode: string;
+  serviceName: string;
+  customerCode: string;
+  customerName: string;
+  billNumber?: string;
+  amount: number;
+  fromAccount: string;
+  paymentDate: string;
+  period?: string;
+  status: 'pending' | 'completed' | 'failed';
+  feeAmount: number;
+  totalAmount: number;
+}
+

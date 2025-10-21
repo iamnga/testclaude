@@ -13,6 +13,8 @@ import TransferSingle from './pages/transfer/TransferSingle';
 import TransferBatch from './pages/transfer/TransferBatch';
 import TransferRecurring from './pages/transfer/TransferRecurring';
 import TransferVouchers from './pages/transfer/TransferVouchers';
+import BillPayment from './pages/bills/BillPayment';
+import BillPaymentHistory from './pages/bills/BillPaymentHistory';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -136,9 +138,16 @@ const AppRoutes: React.FC = () => {
         </ProtectedRoute>
       } />
 
+      {/* Bill Payment Routes */}
       <Route path="/bills" element={
         <ProtectedRoute>
-          <ComingSoon title="Thanh toán hóa đơn" />
+          <BillPayment />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/bills/history" element={
+        <ProtectedRoute>
+          <BillPaymentHistory />
         </ProtectedRoute>
       } />
 
