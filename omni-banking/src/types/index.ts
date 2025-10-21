@@ -77,3 +77,81 @@ export interface EInvoice {
   status: 'issued' | 'cancelled';
   downloadUrl?: string;
 }
+
+// Transfer types
+export interface Beneficiary {
+  accountNumber: string;
+  accountName: string;
+  bankCode?: string;
+  bankName?: string;
+}
+
+export interface TransferOrder {
+  id: string;
+  fromAccount: string;
+  beneficiary: Beneficiary;
+  amount: number;
+  currency: string;
+  content: string;
+  transferType: 'internal' | 'interbank' | 'napas247';
+  executionDate: string;
+  status: 'pending' | 'approved' | 'rejected' | 'completed' | 'failed';
+  createdDate: string;
+  createdBy: string;
+  approvedBy?: string;
+  feeAmount: number;
+  feeType: 'sender' | 'receiver';
+}
+
+export interface BatchTransferItem {
+  id: string;
+  beneficiary: Beneficiary;
+  amount: number;
+  content: string;
+  status: 'ok' | 'error' | 'init';
+  errorMessage?: string;
+}
+
+export interface BatchTransfer {
+  id: string;
+  batchName: string;
+  fromAccount: string;
+  totalAmount: number;
+  totalItems: number;
+  transferType: 'internal' | 'mixed';
+  items: BatchTransferItem[];
+  status: 'draft' | 'pending' | 'approved' | 'completed';
+  createdDate: string;
+  executionDate: string;
+}
+
+export interface RecurringTransfer {
+  id: string;
+  transactionName: string;
+  fromAccount: string;
+  beneficiary: Beneficiary;
+  amount: number;
+  content: string;
+  startDate: string;
+  endDate: string;
+  frequency: 'daily' | 'weekly' | 'monthly';
+  nextExecutionDate: string;
+  status: 'active' | 'paused' | 'completed' | 'cancelled';
+  createdDate: string;
+  totalExecutions: number;
+  completedExecutions: number;
+}
+
+export interface TransferVoucher {
+  id: string;
+  transactionId: string;
+  fromAccount: string;
+  beneficiary: Beneficiary;
+  amount: number;
+  currency: string;
+  content: string;
+  transactionDate: string;
+  status: 'success' | 'failed';
+  voucherUrl?: string;
+}
+

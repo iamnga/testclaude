@@ -9,6 +9,10 @@ import AccountList from './pages/accounts/AccountList';
 import AccountStatement from './pages/accounts/AccountStatement';
 import BlockedAccounts from './pages/accounts/BlockedAccounts';
 import EInvoices from './pages/accounts/EInvoices';
+import TransferSingle from './pages/transfer/TransferSingle';
+import TransferBatch from './pages/transfer/TransferBatch';
+import TransferRecurring from './pages/transfer/TransferRecurring';
+import TransferVouchers from './pages/transfer/TransferVouchers';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -93,12 +97,32 @@ const AppRoutes: React.FC = () => {
         </ProtectedRoute>
       } />
 
-      {/* Placeholder routes for quick access items */}
+      {/* Transfer Routes */}
       <Route path="/transfer" element={
         <ProtectedRoute>
-          <ComingSoon title="Chuyển tiền" />
+          <TransferSingle />
         </ProtectedRoute>
       } />
+
+      <Route path="/transfer/batch" element={
+        <ProtectedRoute>
+          <TransferBatch />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/transfer/recurring" element={
+        <ProtectedRoute>
+          <TransferRecurring />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/transfer/vouchers" element={
+        <ProtectedRoute>
+          <TransferVouchers />
+        </ProtectedRoute>
+      } />
+
+      {/* Placeholder routes for quick access items */}
 
       <Route path="/deposit" element={
         <ProtectedRoute>

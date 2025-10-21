@@ -114,6 +114,11 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           label: 'Chuyển tiền định kỳ',
           onClick: () => navigate('/transfer/recurring'),
         },
+        {
+          key: '/transfer/vouchers',
+          label: 'Chứng từ giao dịch',
+          onClick: () => navigate('/transfer/vouchers'),
+        },
       ],
     },
     {
