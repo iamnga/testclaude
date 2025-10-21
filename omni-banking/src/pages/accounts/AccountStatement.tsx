@@ -24,7 +24,7 @@ import {
   ArrowDownOutlined,
 } from '@ant-design/icons';
 import { useAuth } from '../../context/AuthContext';
-import { Transaction } from '../../types';
+import type { Transaction } from '../../types';
 import { mockTransactions } from '../../data/mockData';
 import AppLayout from '../../components/AppLayout';
 import dayjs from 'dayjs';

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Table, Tag, Button, Typography, DatePicker, Space, message } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { FileProtectOutlined, DownloadOutlined, EyeOutlined } from '@ant-design/icons';
-import { EInvoice } from '../../types';
+import type { EInvoice } from '../../types';
 import { mockEInvoices } from '../../data/mockData';
 import AppLayout from '../../components/AppLayout';
 import dayjs from 'dayjs';

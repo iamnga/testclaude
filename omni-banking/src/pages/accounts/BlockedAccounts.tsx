@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Table, Tag, Typography, Select, Space } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { LockOutlined, UnlockOutlined } from '@ant-design/icons';
-import { BlockedAccount } from '../../types';
+import type { BlockedAccount } from '../../types';
 import { mockBlockedAccounts } from '../../data/mockData';
 import AppLayout from '../../components/AppLayout';
 import dayjs from 'dayjs';
