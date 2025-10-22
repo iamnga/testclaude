@@ -314,3 +314,36 @@ export interface SalaryVoucher {
   downloadUrl?: string;
   hasDetailAccess: boolean; // Quyền xem chi tiết
 }
+
+// Virtual Account types
+export interface VirtualAccount {
+  id: string;
+  virtualAccountNumber: string;
+  accountName: string;
+  description: string;
+  linkedAccount: string; // Tài khoản thật liên kết
+  balance: number;
+  currency: string;
+  status: 'pending_approval' | 'approved' | 'rejected' | 'active' | 'inactive';
+  createdBy: string;
+  createdDate: string;
+  approvedBy?: string;
+  approvedDate?: string;
+  rejectedReason?: string;
+  lastTransactionDate?: string;
+}
+
+export interface VirtualAccountTransaction {
+  id: string;
+  virtualAccountNumber: string;
+  virtualAccountName: string;
+  transactionType: 'credit'; // Chỉ ghi có (nhận tiền)
+  amount: number;
+  currency: string;
+  fromAccount: string;
+  fromAccountName: string;
+  content: string;
+  transactionDate: string;
+  status: 'completed';
+  referenceNumber: string;
+}

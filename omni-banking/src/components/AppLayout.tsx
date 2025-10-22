@@ -206,6 +206,28 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       ],
     },
     {
+      key: 'virtual-account',
+      icon: <BankOutlined />,
+      label: 'Tài khoản định danh',
+      children: [
+        {
+          key: '/virtual-account/management',
+          label: 'Quản lý TK định danh',
+          onClick: () => navigate('/virtual-account/management'),
+        },
+        {
+          key: '/virtual-account/approval',
+          label: 'Phê duyệt TK định danh',
+          onClick: () => navigate('/virtual-account/approval'),
+        },
+        {
+          key: '/virtual-account/transactions',
+          label: 'Lịch sử giao dịch',
+          onClick: () => navigate('/virtual-account/transactions'),
+        },
+      ],
+    },
+    {
       key: '/loans',
       icon: <WalletOutlined />,
       label: 'Khoản vay',
@@ -238,6 +260,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     if (path.startsWith('/deposit/')) return ['deposit'];
     if (path.startsWith('/future-transfer/')) return ['future-transfer'];
     if (path.startsWith('/salary/')) return ['salary'];
+    if (path.startsWith('/virtual-account/')) return ['virtual-account'];
     if (path === '/bills') return ['bills'];
     return [];
   };

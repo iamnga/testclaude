@@ -23,6 +23,9 @@ import FutureTransferManagement from './pages/futureTransfer/FutureTransferManag
 import CreateSalaryPayment from './pages/salary/CreateSalaryPayment';
 import SalaryPaymentApproval from './pages/salary/SalaryPaymentApproval';
 import SalaryVouchers from './pages/salary/SalaryVouchers';
+import VirtualAccountManagement from './pages/virtual-account/VirtualAccountManagement';
+import VirtualAccountApproval from './pages/virtual-account/VirtualAccountApproval';
+import VirtualAccountTransactions from './pages/virtual-account/VirtualAccountTransactions';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -181,6 +184,25 @@ const AppRoutes: React.FC = () => {
       <Route path="/salary/vouchers" element={
         <ProtectedRoute>
           <SalaryVouchers />
+        </ProtectedRoute>
+      } />
+
+      {/* Virtual Account Routes */}
+      <Route path="/virtual-account/management" element={
+        <ProtectedRoute>
+          <VirtualAccountManagement />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/virtual-account/approval" element={
+        <ProtectedRoute>
+          <VirtualAccountApproval />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/virtual-account/transactions" element={
+        <ProtectedRoute>
+          <VirtualAccountTransactions />
         </ProtectedRoute>
       } />
 
