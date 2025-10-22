@@ -20,6 +20,9 @@ import DepositList from './pages/deposit/DepositList';
 import PendingTransactions from './pages/pending/PendingTransactions';
 import FutureTransferApproval from './pages/futureTransfer/FutureTransferApproval';
 import FutureTransferManagement from './pages/futureTransfer/FutureTransferManagement';
+import CreateSalaryPayment from './pages/salary/CreateSalaryPayment';
+import SalaryPaymentApproval from './pages/salary/SalaryPaymentApproval';
+import SalaryVouchers from './pages/salary/SalaryVouchers';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -159,6 +162,25 @@ const AppRoutes: React.FC = () => {
       <Route path="/future-transfer/management" element={
         <ProtectedRoute>
           <FutureTransferManagement />
+        </ProtectedRoute>
+      } />
+
+      {/* Salary Payment Routes */}
+      <Route path="/salary/create" element={
+        <ProtectedRoute>
+          <CreateSalaryPayment />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/salary/approval" element={
+        <ProtectedRoute>
+          <SalaryPaymentApproval />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/salary/vouchers" element={
+        <ProtectedRoute>
+          <SalaryVouchers />
         </ProtectedRoute>
       } />
 
