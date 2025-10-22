@@ -40,6 +40,30 @@ export interface DepositContract {
   startDate: string;
   endDate: string;
   status: 'active' | 'matured' | 'closed';
+  productName: string;
+  interestPaymentMethod: 'monthly' | 'maturity' | 'upfront';
+  autoRenewal: boolean;
+}
+
+export interface DepositTerm {
+  term: number;
+  termUnit: 'month' | 'year';
+  interestRate: number;
+  minAmount: number;
+  productName: string;
+}
+
+export interface DepositSettlement {
+  id: string;
+  contractId: string;
+  contractNumber: string;
+  settlementDate: string;
+  principalAmount: number;
+  interestAmount: number;
+  totalAmount: number;
+  destinationAccount: string;
+  status: 'pending' | 'completed' | 'cancelled';
+  createdDate: string;
 }
 
 export interface QuickAccessItem {

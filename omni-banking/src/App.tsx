@@ -15,6 +15,8 @@ import TransferRecurring from './pages/transfer/TransferRecurring';
 import TransferVouchers from './pages/transfer/TransferVouchers';
 import BillPayment from './pages/bills/BillPayment';
 import BillPaymentHistory from './pages/bills/BillPaymentHistory';
+import CreateDeposit from './pages/deposit/CreateDeposit';
+import DepositList from './pages/deposit/DepositList';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -124,11 +126,16 @@ const AppRoutes: React.FC = () => {
         </ProtectedRoute>
       } />
 
-      {/* Placeholder routes for quick access items */}
-
+      {/* Deposit Contract Routes */}
       <Route path="/deposit" element={
         <ProtectedRoute>
-          <ComingSoon title="Mở hợp đồng tiền gửi" />
+          <CreateDeposit />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/deposit/list" element={
+        <ProtectedRoute>
+          <DepositList />
         </ProtectedRoute>
       } />
 

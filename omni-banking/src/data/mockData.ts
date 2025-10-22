@@ -1,4 +1,4 @@
-import type { User, Transaction, DepositContract, BlockedAccount, EInvoice, BillService, BillPayment } from '../types';
+import type { User, Transaction, DepositContract, DepositTerm, DepositSettlement, BlockedAccount, EInvoice, BillService, BillPayment } from '../types';
 
 // Mock users - password mặc định từ OCB
 export const mockUsers: User[] = [
@@ -179,7 +179,10 @@ export const mockDepositContracts: DepositContract[] = [
     termUnit: 'month',
     startDate: '2025-01-15',
     endDate: '2026-01-15',
-    status: 'active'
+    status: 'active',
+    productName: 'Tiết kiệm linh hoạt 12 tháng',
+    interestPaymentMethod: 'maturity',
+    autoRenewal: true
   },
   {
     id: 'HDTG002',
@@ -191,7 +194,10 @@ export const mockDepositContracts: DepositContract[] = [
     termUnit: 'month',
     startDate: '2025-03-01',
     endDate: '2027-03-01',
-    status: 'active'
+    status: 'active',
+    productName: 'Tiết kiệm tích lũy 24 tháng',
+    interestPaymentMethod: 'monthly',
+    autoRenewal: false
   },
   {
     id: 'HDTG003',
@@ -203,7 +209,86 @@ export const mockDepositContracts: DepositContract[] = [
     termUnit: 'month',
     startDate: '2024-10-01',
     endDate: '2025-04-01',
-    status: 'matured'
+    status: 'matured',
+    productName: 'Tiết kiệm ngắn hạn 6 tháng',
+    interestPaymentMethod: 'maturity',
+    autoRenewal: false
+  }
+];
+
+// Mock deposit terms - Lãi suất tiền gửi
+export const mockDepositTerms: DepositTerm[] = [
+  {
+    term: 1,
+    termUnit: 'month',
+    interestRate: 3.0,
+    minAmount: 10000000,
+    productName: 'Tiết kiệm ngắn hạn 1 tháng'
+  },
+  {
+    term: 3,
+    termUnit: 'month',
+    interestRate: 3.5,
+    minAmount: 10000000,
+    productName: 'Tiết kiệm ngắn hạn 3 tháng'
+  },
+  {
+    term: 6,
+    termUnit: 'month',
+    interestRate: 4.5,
+    minAmount: 10000000,
+    productName: 'Tiết kiệm ngắn hạn 6 tháng'
+  },
+  {
+    term: 9,
+    termUnit: 'month',
+    interestRate: 5.0,
+    minAmount: 50000000,
+    productName: 'Tiết kiệm linh hoạt 9 tháng'
+  },
+  {
+    term: 12,
+    termUnit: 'month',
+    interestRate: 5.5,
+    minAmount: 50000000,
+    productName: 'Tiết kiệm linh hoạt 12 tháng'
+  },
+  {
+    term: 18,
+    termUnit: 'month',
+    interestRate: 5.8,
+    minAmount: 100000000,
+    productName: 'Tiết kiệm tích lũy 18 tháng'
+  },
+  {
+    term: 24,
+    termUnit: 'month',
+    interestRate: 6.0,
+    minAmount: 100000000,
+    productName: 'Tiết kiệm tích lũy 24 tháng'
+  },
+  {
+    term: 36,
+    termUnit: 'month',
+    interestRate: 6.2,
+    minAmount: 200000000,
+    productName: 'Tiết kiệm dài hạn 36 tháng'
+  },
+];
+
+// Mock deposit settlements - Lệnh tất toán
+export const mockDepositSettlements: DepositSettlement[] = [
+  {
+    id: 'SETTLE001',
+    contractId: 'HDTG003',
+    contractNumber: 'HDTG2024009876',
+    settlementDate: '2025-04-01',
+    principalAmount: 150000000,
+    interestAmount: 3750000,
+    totalAmount: 153750000,
+    destinationAccount: '0011234567890',
+    status: 'completed',
+    createdDate: '2025-03-28T10:30:00'
   }
 ];
 
