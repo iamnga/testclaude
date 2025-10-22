@@ -381,3 +381,36 @@ export interface LoanRepayment {
   paymentMethod: 'auto_debit' | 'manual'; // Tự động trích nợ hoặc trả thủ công
   referenceNumber: string;
 }
+
+// Utility types - Công cụ tiện ích
+export interface ATMBranch {
+  id: string;
+  type: 'atm' | 'branch'; // Loại: ATM hoặc Chi nhánh
+  name: string;
+  address: string;
+  district: string; // Quận/Huyện
+  city: string; // Thành phố
+  latitude: number;
+  longitude: number;
+  phone?: string;
+  workingHours?: string;
+  services?: string[]; // Dịch vụ (chỉ cho chi nhánh)
+  atmType?: 'withdraw' | 'deposit' | 'both'; // Loại ATM (chỉ cho ATM)
+  is24h?: boolean; // Hoạt động 24/7
+}
+
+export interface ExchangeRate {
+  currency: string; // Mã tiền tệ (USD, EUR, JPY, etc.)
+  currencyName: string;
+  buyRate: number; // Tỷ giá mua
+  sellRate: number; // Tỷ giá bán
+  transferRate: number; // Tỷ giá chuyển khoản
+  lastUpdated: string;
+}
+
+export interface InterestRate {
+  term: number; // Kỳ hạn (tháng)
+  termName: string;
+  rate: number; // Lãi suất (%/năm)
+  minAmount: number; // Số tiền tối thiểu
+}
