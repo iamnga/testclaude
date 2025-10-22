@@ -1,4 +1,4 @@
-import type { User, Transaction, DepositContract, DepositTerm, DepositSettlement, BlockedAccount, EInvoice, BillService, BillPayment, PendingTransaction, FutureTransfer } from '../types';
+import type { User, Transaction, DepositContract, DepositTerm, DepositSettlement, BlockedAccount, EInvoice, BillService, BillPayment, PendingTransaction, FutureTransfer, SalaryPayment, SalaryVoucher } from '../types';
 
 // Mock users - password mặc định từ OCB
 export const mockUsers: User[] = [
@@ -867,5 +867,100 @@ export const mockFutureTransfers: FutureTransfer[] = [
     approvedBy: 'approver_demo',
     approvedDate: '2025-10-21T09:00:00',
     rejectedReason: 'Thông tin hợp đồng không rõ ràng',
+  },
+];
+
+// Mock salary payments - Chi lương bảo mật
+export const mockSalaryPayments: SalaryPayment[] = [
+  {
+    id: 'SAL001',
+    batchCode: 'SAL2025100001',
+    batchName: 'Chi lương nhân viên tháng 10/2025',
+    fromAccount: '0011234567890',
+    subAccount: '0011234567899',
+    transferType: 'internal',
+    totalAmount: 150000000,
+    totalItems: 15,
+    currency: 'VND',
+    feeAmount: 3300,
+    status: 'pending_approval',
+    validationStatus: 'ok',
+    items: [
+      { id: 'EMP001', employeeId: 'NV001', employeeName: 'Nguyễn Văn A', accountNumber: '0021111111111', bankCode: 'OCB', bankName: 'Ngân hàng TMCP Phương Đông', amount: 12000000, status: 'ok' },
+      { id: 'EMP002', employeeId: 'NV002', employeeName: 'Trần Thị B', accountNumber: '0021111111112', bankCode: 'OCB', bankName: 'Ngân hàng TMCP Phương Đông', amount: 15000000, status: 'ok' },
+      { id: 'EMP003', employeeId: 'NV003', employeeName: 'Lê Văn C', accountNumber: '0021111111113', amount: 10000000, status: 'ok' },
+    ],
+    createdBy: 'user_demo',
+    createdDate: '2025-10-22T08:00:00',
+  },
+  {
+    id: 'SAL002',
+    batchCode: 'SAL2025100002',
+    batchName: 'Chi thưởng cuối năm 2025',
+    fromAccount: '0011234567890',
+    transferType: 'external',
+    totalAmount: 200000000,
+    totalItems: 20,
+    currency: 'VND',
+    feeAmount: 6600,
+    status: 'approved',
+    validationStatus: 'ok',
+    items: [
+      { id: 'EMP004', employeeId: 'NV004', employeeName: 'Phạm Văn D', accountNumber: '0031111111111', bankCode: 'VCB', bankName: 'Ngân hàng TMCP Ngoại thương Việt Nam', amount: 8000000, status: 'ok' },
+      { id: 'EMP005', employeeId: 'NV005', employeeName: 'Hoàng Thị E', accountNumber: '0031111111112', bankCode: 'VCB', bankName: 'Ngân hàng TMCP Ngoại thương Việt Nam', amount: 12000000, status: 'ok' },
+    ],
+    createdBy: 'user_demo',
+    createdDate: '2025-10-20T10:00:00',
+    approvedBy: 'approver_demo',
+    approvedDate: '2025-10-20T11:00:00',
+  },
+  {
+    id: 'SAL003',
+    batchCode: 'SAL2025090001',
+    batchName: 'Chi lương nhân viên tháng 9/2025',
+    fromAccount: '0011234567890',
+    transferType: 'internal',
+    totalAmount: 145000000,
+    totalItems: 14,
+    currency: 'VND',
+    feeAmount: 3100,
+    status: 'executed',
+    validationStatus: 'ok',
+    items: [
+      { id: 'EMP006', employeeId: 'NV006', employeeName: 'Vũ Văn F', accountNumber: '0021111111114', amount: 11000000, status: 'ok' },
+    ],
+    createdBy: 'user_demo',
+    createdDate: '2025-09-25T08:00:00',
+    approvedBy: 'approver_demo',
+    approvedDate: '2025-09-25T09:00:00',
+    executedDate: '2025-09-25T10:00:00',
+  },
+];
+
+// Mock salary vouchers - Chứng từ chi lương
+export const mockSalaryVouchers: SalaryVoucher[] = [
+  {
+    id: 'VOUCH001',
+    salaryPaymentId: 'SAL003',
+    batchCode: 'SAL2025090001',
+    batchName: 'Chi lương nhân viên tháng 9/2025',
+    voucherType: 'debit_note',
+    fromAccount: '0011234567890',
+    totalAmount: 145000000,
+    totalItems: 14,
+    executedDate: '2025-09-25T10:00:00',
+    hasDetailAccess: true,
+  },
+  {
+    id: 'VOUCH002',
+    salaryPaymentId: 'SAL003',
+    batchCode: 'SAL2025090001',
+    batchName: 'Chi lương nhân viên tháng 9/2025',
+    voucherType: 'statement',
+    fromAccount: '0011234567890',
+    totalAmount: 145000000,
+    totalItems: 14,
+    executedDate: '2025-09-25T10:00:00',
+    hasDetailAccess: false,
   },
 ];

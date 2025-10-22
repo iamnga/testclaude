@@ -264,3 +264,53 @@ export interface FutureTransfer {
   rejectedReason?: string;
   itemCount?: number; // For batch transfers
 }
+
+// Salary Payment types
+export interface SalaryPaymentItem {
+  id: string;
+  employeeId: string;
+  employeeName: string;
+  accountNumber: string;
+  bankCode?: string;
+  bankName?: string;
+  amount: number;
+  status: 'ok' | 'error';
+  errorMessage?: string;
+}
+
+export interface SalaryPayment {
+  id: string;
+  batchCode: string;
+  batchName: string;
+  fromAccount: string;
+  subAccount?: string; // Tài khoản phụ
+  transferType: 'internal' | 'external'; // Trong/ngoài hệ thống
+  totalAmount: number;
+  totalItems: number;
+  currency: string;
+  feeAmount: number;
+  status: 'draft' | 'pending_approval' | 'approved' | 'rejected' | 'executed';
+  validationStatus: 'ok' | 'init' | 'error';
+  validationMessage?: string;
+  items: SalaryPaymentItem[];
+  createdBy: string;
+  createdDate: string;
+  approvedBy?: string;
+  approvedDate?: string;
+  executedDate?: string;
+  rejectedReason?: string;
+}
+
+export interface SalaryVoucher {
+  id: string;
+  salaryPaymentId: string;
+  batchCode: string;
+  batchName: string;
+  voucherType: 'debit_note' | 'statement'; // Giấy báo nợ hoặc bảng kê
+  fromAccount: string;
+  totalAmount: number;
+  totalItems: number;
+  executedDate: string;
+  downloadUrl?: string;
+  hasDetailAccess: boolean; // Quyền xem chi tiết
+}
