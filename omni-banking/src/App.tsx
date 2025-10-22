@@ -26,6 +26,8 @@ import SalaryVouchers from './pages/salary/SalaryVouchers';
 import VirtualAccountManagement from './pages/virtual-account/VirtualAccountManagement';
 import VirtualAccountApproval from './pages/virtual-account/VirtualAccountApproval';
 import VirtualAccountTransactions from './pages/virtual-account/VirtualAccountTransactions';
+import LoanList from './pages/loans/LoanList';
+import LoanRepaymentHistory from './pages/loans/LoanRepaymentHistory';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -222,6 +224,19 @@ const AppRoutes: React.FC = () => {
       <Route path="/transactions" element={
         <ProtectedRoute>
           <ComingSoon title="Lịch sử giao dịch" />
+        </ProtectedRoute>
+      } />
+
+      {/* Loan Routes */}
+      <Route path="/loans" element={
+        <ProtectedRoute>
+          <LoanList />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/loans/repayment-history" element={
+        <ProtectedRoute>
+          <LoanRepaymentHistory />
         </ProtectedRoute>
       } />
 

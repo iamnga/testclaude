@@ -228,10 +228,21 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       ],
     },
     {
-      key: '/loans',
+      key: 'loans',
       icon: <WalletOutlined />,
       label: 'Khoản vay',
-      onClick: () => navigate('/loans'),
+      children: [
+        {
+          key: '/loans',
+          label: 'Danh sách khoản vay',
+          onClick: () => navigate('/loans'),
+        },
+        {
+          key: '/loans/repayment-history',
+          label: 'Lịch sử trả nợ',
+          onClick: () => navigate('/loans/repayment-history'),
+        },
+      ],
     },
   ];
 
@@ -261,6 +272,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     if (path.startsWith('/future-transfer/')) return ['future-transfer'];
     if (path.startsWith('/salary/')) return ['salary'];
     if (path.startsWith('/virtual-account/')) return ['virtual-account'];
+    if (path.startsWith('/loans')) return ['loans'];
     if (path === '/bills') return ['bills'];
     return [];
   };

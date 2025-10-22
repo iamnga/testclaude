@@ -347,3 +347,37 @@ export interface VirtualAccountTransaction {
   status: 'completed';
   referenceNumber: string;
 }
+
+// Loan types - Khoản vay
+export interface Loan {
+  id: string;
+  loanNumber: string; // Số hợp đồng vay
+  loanType: 'business' | 'personal' | 'mortgage' | 'overdraft'; // Loại vay
+  loanTypeName: string;
+  principalAmount: number; // Số tiền vay ban đầu
+  outstandingBalance: number; // Số dư nợ còn lại
+  interestRate: number; // Lãi suất (%/năm)
+  term: number; // Kỳ hạn (tháng)
+  disbursementDate: string; // Ngày giải ngân
+  maturityDate: string; // Ngày đáo hạn
+  repaymentAccount: string; // Tài khoản trả nợ
+  status: 'active' | 'completed' | 'overdue' | 'closed';
+  nextPaymentDate?: string; // Ngày trả nợ kế tiếp
+  nextPaymentAmount?: number; // Số tiền trả kỳ sau
+  currency: string;
+}
+
+export interface LoanRepayment {
+  id: string;
+  loanNumber: string;
+  loanTypeName: string;
+  paymentDate: string; // Ngày trả nợ
+  principalAmount: number; // Tiền gốc
+  interestAmount: number; // Tiền lãi
+  penaltyAmount: number; // Tiền phạt (nếu có)
+  totalAmount: number; // Tổng tiền trả
+  outstandingBalance: number; // Số dư nợ còn lại sau khi trả
+  status: 'completed' | 'pending' | 'failed';
+  paymentMethod: 'auto_debit' | 'manual'; // Tự động trích nợ hoặc trả thủ công
+  referenceNumber: string;
+}
