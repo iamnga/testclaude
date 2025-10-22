@@ -239,3 +239,28 @@ export interface ApprovalAction {
   rejectedReason?: string;
 }
 
+// Future Transfer types
+export interface FutureTransfer {
+  id: string;
+  transferType: 'single' | 'batch';
+  batchCode?: string;
+  batchName?: string;
+  fromAccount: string;
+  beneficiary?: Beneficiary;
+  amount: number;
+  currency: string;
+  content: string;
+  feeAmount: number;
+  totalAmount: number;
+  executionDate: string;
+  status: 'pending_approval' | 'approved' | 'rejected' | 'executed' | 'cancelled';
+  validationStatus: 'ok' | 'init' | 'error';
+  validationMessage?: string;
+  createdBy: string;
+  createdDate: string;
+  approvedBy?: string;
+  approvedDate?: string;
+  executedDate?: string;
+  rejectedReason?: string;
+  itemCount?: number; // For batch transfers
+}

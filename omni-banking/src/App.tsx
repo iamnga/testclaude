@@ -18,6 +18,8 @@ import BillPaymentHistory from './pages/bills/BillPaymentHistory';
 import CreateDeposit from './pages/deposit/CreateDeposit';
 import DepositList from './pages/deposit/DepositList';
 import PendingTransactions from './pages/pending/PendingTransactions';
+import FutureTransferApproval from './pages/futureTransfer/FutureTransferApproval';
+import FutureTransferManagement from './pages/futureTransfer/FutureTransferManagement';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -144,6 +146,19 @@ const AppRoutes: React.FC = () => {
       <Route path="/pending" element={
         <ProtectedRoute>
           <PendingTransactions />
+        </ProtectedRoute>
+      } />
+
+      {/* Future Transfer Routes */}
+      <Route path="/future-transfer/approval" element={
+        <ProtectedRoute>
+          <FutureTransferApproval />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/future-transfer/management" element={
+        <ProtectedRoute>
+          <FutureTransferManagement />
         </ProtectedRoute>
       } />
 

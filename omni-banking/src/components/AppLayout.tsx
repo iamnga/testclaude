@@ -19,6 +19,7 @@ import {
   FileProtectOutlined,
   DollarOutlined,
   HistoryOutlined,
+  ClockCircleOutlined,
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -166,6 +167,23 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       onClick: () => navigate('/pending'),
     },
     {
+      key: 'future-transfer',
+      icon: <ClockCircleOutlined />,
+      label: 'Chuyển tiền tương lai',
+      children: [
+        {
+          key: '/future-transfer/approval',
+          label: 'Duyệt giao dịch tương lai',
+          onClick: () => navigate('/future-transfer/approval'),
+        },
+        {
+          key: '/future-transfer/management',
+          label: 'Quản lý giao dịch tương lai',
+          onClick: () => navigate('/future-transfer/management'),
+        },
+      ],
+    },
+    {
       key: '/loans',
       icon: <WalletOutlined />,
       label: 'Khoản vay',
@@ -196,6 +214,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     if (path.startsWith('/transfer/')) return ['transfer'];
     if (path.startsWith('/bills/')) return ['bills'];
     if (path.startsWith('/deposit/')) return ['deposit'];
+    if (path.startsWith('/future-transfer/')) return ['future-transfer'];
     if (path === '/bills') return ['bills'];
     return [];
   };
