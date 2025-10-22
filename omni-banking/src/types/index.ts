@@ -203,3 +203,39 @@ export interface BillPayment {
   totalAmount: number;
 }
 
+// Pending Transaction types
+export interface PendingTransaction {
+  id: string;
+  transactionType: 'transfer' | 'bill_payment' | 'deposit_contract' | 'batch_transfer';
+  fromAccount: string;
+  toAccount?: string;
+  beneficiary?: Beneficiary;
+  amount: number;
+  currency: string;
+  content: string;
+  feeAmount: number;
+  totalAmount: number;
+  status: 'pending' | 'approved' | 'rejected';
+  validationStatus: 'ok' | 'init' | 'error';
+  validationMessage?: string;
+  createdBy: string;
+  createdDate: string;
+  approvedBy?: string;
+  approvedDate?: string;
+  rejectedReason?: string;
+  // Additional fields for specific transaction types
+  serviceName?: string; // For bill payments
+  productName?: string; // For deposit contracts
+  batchName?: string; // For batch transfers
+  itemCount?: number; // For batch transfers
+}
+
+export interface ApprovalAction {
+  transactionIds: string[];
+  action: 'approve' | 'reject';
+  authMethod: 'iotp' | 'digital_signature';
+  otpCode?: string;
+  signature?: string;
+  rejectedReason?: string;
+}
+

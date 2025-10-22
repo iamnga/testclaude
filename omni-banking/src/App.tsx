@@ -17,6 +17,7 @@ import BillPayment from './pages/bills/BillPayment';
 import BillPaymentHistory from './pages/bills/BillPaymentHistory';
 import CreateDeposit from './pages/deposit/CreateDeposit';
 import DepositList from './pages/deposit/DepositList';
+import PendingTransactions from './pages/pending/PendingTransactions';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -139,9 +140,10 @@ const AppRoutes: React.FC = () => {
         </ProtectedRoute>
       } />
 
+      {/* Pending Transactions Route */}
       <Route path="/pending" element={
         <ProtectedRoute>
-          <ComingSoon title="Giao dịch chờ duyệt" />
+          <PendingTransactions />
         </ProtectedRoute>
       } />
 
