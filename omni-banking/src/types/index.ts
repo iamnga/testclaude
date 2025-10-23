@@ -432,3 +432,60 @@ export interface ForeignExchangeTransaction {
   referenceNumber: string;
   createdBy: string;
 }
+
+// International Transfer types - Chuyển tiền quốc tế
+export interface InternationalTransferDocument {
+  id: string;
+  documentType: string; // Loại chứng từ
+  fileName: string;
+  fileSize: number; // bytes
+  fileUrl?: string;
+  uploadDate: string;
+}
+
+export interface BeneficiaryBank {
+  bankName: string;
+  bankAddress: string;
+  swiftCode: string;
+  accountNumber: string;
+}
+
+export interface IntermediaryBank {
+  bankName: string;
+  bankAddress: string;
+  swiftCode: string;
+}
+
+export interface Beneficiary {
+  name: string;
+  address: string;
+  country: string;
+}
+
+export interface InternationalTransfer {
+  id: string;
+  referenceNumber: string;
+  fromAccount: string;
+  fromAccountName: string;
+  amount: number;
+  currency: string;
+  purpose: string; // Mục đích chuyển tiền
+  purposeDescription: string; // Diễn giải chi tiết
+  beneficiary: Beneficiary;
+  beneficiaryBank: BeneficiaryBank;
+  intermediaryBank?: IntermediaryBank;
+  feeType: 'SHARE' | 'OUR' | 'BEN'; // Phí dịch vụ
+  documents: InternationalTransferDocument[];
+  status: 'draft' | 'submitted' | 'ocb_review' | 'need_revision' | 'pending_approval' | 'approved' | 'rejected' | 'processing' | 'completed' | 'failed';
+  statusMessage?: string;
+  createdDate: string;
+  createdBy: string;
+  submittedDate?: string;
+  approvedDate?: string;
+  approvedBy?: string;
+  completedDate?: string;
+  rejectedReason?: string;
+  mt103Url?: string; // URL file MT103
+  canSupplementDocuments: boolean; // Có thể bổ sung hồ sơ
+  documentDeadline?: string; // Hạn nộp hồ sơ
+}

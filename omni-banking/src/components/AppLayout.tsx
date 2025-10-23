@@ -23,6 +23,7 @@ import {
   ToolOutlined,
   EnvironmentOutlined,
   CalculatorOutlined,
+  GlobalOutlined,
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -290,6 +291,33 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       ],
     },
     {
+      key: 'international-transfer',
+      icon: <GlobalOutlined />,
+      label: 'Chuyển tiền quốc tế',
+      children: [
+        {
+          key: '/international-transfer/create',
+          label: 'Tạo lệnh chuyển tiền',
+          onClick: () => navigate('/international-transfer/create'),
+        },
+        {
+          key: '/international-transfer/approval',
+          label: 'Phê duyệt',
+          onClick: () => navigate('/international-transfer/approval'),
+        },
+        {
+          key: '/international-transfer/tracking',
+          label: 'Theo dõi giao dịch',
+          onClick: () => navigate('/international-transfer/tracking'),
+        },
+        {
+          key: '/international-transfer/history',
+          label: 'Lịch sử giao dịch',
+          onClick: () => navigate('/international-transfer/history'),
+        },
+      ],
+    },
+    {
       key: '/settings',
       icon: <UserOutlined />,
       label: 'Cài đặt cá nhân',
@@ -326,6 +354,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     if (path.startsWith('/loans')) return ['loans'];
     if (path.startsWith('/utilities/')) return ['utilities'];
     if (path.startsWith('/foreign-exchange/')) return ['foreign-exchange'];
+    if (path.startsWith('/international-transfer/')) return ['international-transfer'];
     if (path === '/bills') return ['bills'];
     return [];
   };

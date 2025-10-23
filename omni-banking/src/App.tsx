@@ -34,6 +34,10 @@ import InterestCalculator from './pages/utilities/InterestCalculator';
 import Settings from './pages/settings/Settings';
 import SellForeignCurrency from './pages/foreign-exchange/SellForeignCurrency';
 import ForeignExchangeHistory from './pages/foreign-exchange/ForeignExchangeHistory';
+import CreateInternationalTransfer from './pages/international-transfer/CreateInternationalTransfer';
+import InternationalTransferHistory from './pages/international-transfer/InternationalTransferHistory';
+import InternationalTransferTracking from './pages/international-transfer/InternationalTransferTracking';
+import InternationalTransferApproval from './pages/international-transfer/InternationalTransferApproval';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -282,6 +286,31 @@ const AppRoutes: React.FC = () => {
       <Route path="/foreign-exchange/history" element={
         <ProtectedRoute>
           <ForeignExchangeHistory />
+        </ProtectedRoute>
+      } />
+
+      {/* International Transfer Routes */}
+      <Route path="/international-transfer/create" element={
+        <ProtectedRoute>
+          <CreateInternationalTransfer />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/international-transfer/history" element={
+        <ProtectedRoute>
+          <InternationalTransferHistory />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/international-transfer/tracking" element={
+        <ProtectedRoute>
+          <InternationalTransferTracking />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/international-transfer/approval" element={
+        <ProtectedRoute>
+          <InternationalTransferApproval />
         </ProtectedRoute>
       } />
 
