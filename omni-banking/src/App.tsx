@@ -31,6 +31,7 @@ import LoanRepaymentHistory from './pages/loans/LoanRepaymentHistory';
 import ATMBranchLocator from './pages/utilities/ATMBranchLocator';
 import ExchangeRates from './pages/utilities/ExchangeRates';
 import InterestCalculator from './pages/utilities/InterestCalculator';
+import Settings from './pages/settings/Settings';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -259,6 +260,13 @@ const AppRoutes: React.FC = () => {
       <Route path="/utilities/interest-calculator" element={
         <ProtectedRoute>
           <InterestCalculator />
+        </ProtectedRoute>
+      } />
+
+      {/* Settings Route */}
+      <Route path="/settings" element={
+        <ProtectedRoute>
+          <Settings />
         </ProtectedRoute>
       } />
 

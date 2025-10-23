@@ -272,6 +272,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         },
       ],
     },
+    {
+      key: '/settings',
+      icon: <UserOutlined />,
+      label: 'Cài đặt cá nhân',
+      onClick: () => navigate('/settings'),
+    },
   ];
 
   // Get current selected key from location
