@@ -414,3 +414,21 @@ export interface InterestRate {
   rate: number; // Lãi suất (%/năm)
   minAmount: number; // Số tiền tối thiểu
 }
+
+// Foreign Exchange types - Mua bán ngoại tệ
+export interface ForeignExchangeTransaction {
+  id: string;
+  transactionDate: string;
+  fromCurrency: string; // Ngoại tệ bán
+  fromCurrencyName: string;
+  toCurrency: string; // Tiền nhận (VND)
+  toCurrencyName: string;
+  fromAmount: number; // Số ngoại tệ bán
+  exchangeRate: number; // Tỷ giá áp dụng
+  toAmount: number; // Số tiền VND nhận được
+  fromAccount: string; // Tài khoản ngoại tệ
+  toAccount: string; // Tài khoản VND nhận tiền
+  status: 'completed' | 'pending' | 'failed';
+  referenceNumber: string;
+  createdBy: string;
+}

@@ -32,6 +32,8 @@ import ATMBranchLocator from './pages/utilities/ATMBranchLocator';
 import ExchangeRates from './pages/utilities/ExchangeRates';
 import InterestCalculator from './pages/utilities/InterestCalculator';
 import Settings from './pages/settings/Settings';
+import SellForeignCurrency from './pages/foreign-exchange/SellForeignCurrency';
+import ForeignExchangeHistory from './pages/foreign-exchange/ForeignExchangeHistory';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -267,6 +269,19 @@ const AppRoutes: React.FC = () => {
       <Route path="/settings" element={
         <ProtectedRoute>
           <Settings />
+        </ProtectedRoute>
+      } />
+
+      {/* Foreign Exchange Routes */}
+      <Route path="/foreign-exchange/sell" element={
+        <ProtectedRoute>
+          <SellForeignCurrency />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/foreign-exchange/history" element={
+        <ProtectedRoute>
+          <ForeignExchangeHistory />
         </ProtectedRoute>
       } />
 

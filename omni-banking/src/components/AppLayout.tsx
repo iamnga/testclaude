@@ -273,6 +273,23 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       ],
     },
     {
+      key: 'foreign-exchange',
+      icon: <SwapOutlined />,
+      label: 'Mua bán ngoại tệ',
+      children: [
+        {
+          key: '/foreign-exchange/sell',
+          label: 'Bán ngoại tệ',
+          onClick: () => navigate('/foreign-exchange/sell'),
+        },
+        {
+          key: '/foreign-exchange/history',
+          label: 'Lịch sử giao dịch',
+          onClick: () => navigate('/foreign-exchange/history'),
+        },
+      ],
+    },
+    {
       key: '/settings',
       icon: <UserOutlined />,
       label: 'Cài đặt cá nhân',
@@ -308,6 +325,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     if (path.startsWith('/virtual-account/')) return ['virtual-account'];
     if (path.startsWith('/loans')) return ['loans'];
     if (path.startsWith('/utilities/')) return ['utilities'];
+    if (path.startsWith('/foreign-exchange/')) return ['foreign-exchange'];
     if (path === '/bills') return ['bills'];
     return [];
   };
