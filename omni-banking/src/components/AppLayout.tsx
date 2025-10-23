@@ -20,6 +20,9 @@ import {
   DollarOutlined,
   HistoryOutlined,
   ClockCircleOutlined,
+  ToolOutlined,
+  EnvironmentOutlined,
+  CalculatorOutlined,
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -244,6 +247,31 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
         },
       ],
     },
+    {
+      key: 'utilities',
+      icon: <ToolOutlined />,
+      label: 'Công cụ tiện ích',
+      children: [
+        {
+          key: '/utilities/atm-branch',
+          icon: <EnvironmentOutlined />,
+          label: 'ATM & Chi nhánh',
+          onClick: () => navigate('/utilities/atm-branch'),
+        },
+        {
+          key: '/utilities/exchange-rates',
+          icon: <DollarOutlined />,
+          label: 'Tỷ giá ngoại tệ',
+          onClick: () => navigate('/utilities/exchange-rates'),
+        },
+        {
+          key: '/utilities/interest-calculator',
+          icon: <CalculatorOutlined />,
+          label: 'Tính lãi & Lãi suất',
+          onClick: () => navigate('/utilities/interest-calculator'),
+        },
+      ],
+    },
   ];
 
   // Get current selected key from location
@@ -273,6 +301,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     if (path.startsWith('/salary/')) return ['salary'];
     if (path.startsWith('/virtual-account/')) return ['virtual-account'];
     if (path.startsWith('/loans')) return ['loans'];
+    if (path.startsWith('/utilities/')) return ['utilities'];
     if (path === '/bills') return ['bills'];
     return [];
   };

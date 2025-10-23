@@ -28,6 +28,9 @@ import VirtualAccountApproval from './pages/virtual-account/VirtualAccountApprov
 import VirtualAccountTransactions from './pages/virtual-account/VirtualAccountTransactions';
 import LoanList from './pages/loans/LoanList';
 import LoanRepaymentHistory from './pages/loans/LoanRepaymentHistory';
+import ATMBranchLocator from './pages/utilities/ATMBranchLocator';
+import ExchangeRates from './pages/utilities/ExchangeRates';
+import InterestCalculator from './pages/utilities/InterestCalculator';
 
 // Protected Route Component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -237,6 +240,25 @@ const AppRoutes: React.FC = () => {
       <Route path="/loans/repayment-history" element={
         <ProtectedRoute>
           <LoanRepaymentHistory />
+        </ProtectedRoute>
+      } />
+
+      {/* Utility Routes */}
+      <Route path="/utilities/atm-branch" element={
+        <ProtectedRoute>
+          <ATMBranchLocator />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/utilities/exchange-rates" element={
+        <ProtectedRoute>
+          <ExchangeRates />
+        </ProtectedRoute>
+      } />
+
+      <Route path="/utilities/interest-calculator" element={
+        <ProtectedRoute>
+          <InterestCalculator />
         </ProtectedRoute>
       } />
 
